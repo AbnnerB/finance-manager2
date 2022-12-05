@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* background-color: rgb(10, 206, 141); */
+  background-color: rgb(232, 232, 233);
+}
+
+button,
+input {
+  cursor: pointer;
+}
