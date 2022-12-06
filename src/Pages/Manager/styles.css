@@ -167,7 +167,6 @@ th {
     margin: 0 auto;
     margin-bottom: 1rem;
     width: 100%;
-    /* text-align: center; */
   }
 
   .tdButton Button {
@@ -179,7 +178,7 @@ th {
   td {
     padding: 8px 0px;
     max-width: 80px;
-    /* text-align: center; */
+    text-align: center;
   }
   .tdProductValue {
     width: 40%;
