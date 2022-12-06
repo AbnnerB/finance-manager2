@@ -172,6 +172,7 @@ th {
 
   .tdButton Button {
     font-size: 1.4rem;
+    padding-right: 5px;
   }
 
   th,
