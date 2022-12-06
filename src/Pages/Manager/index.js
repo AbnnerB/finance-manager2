@@ -186,7 +186,7 @@ export default function Manager() {
             <table border="1">
               <thead>
                 <tr>
-                  <th>Produto</th>
+                  <th>Descrição</th>
                   <th>Valor</th>
                   <th>Tipo</th>
                   <th></th>
@@ -195,9 +195,9 @@ export default function Manager() {
               <tbody>
                 {arrayLine.map((item, index) => (
                   <tr key={index}>
-                    <td>{item.product} </td>
-                    <td>{`R$ ${item.values}`}</td>
-                    <td>
+                    <td className="tdProductValue">{item.product} </td>
+                    <td className="tdProductValue">{`R$ ${item.values}`}</td>
+                    <td className="tdType">
                       {item.valueType ? (
                         <FiArrowUpCircle size="20" color="green" />
                       ) : (

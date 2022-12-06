@@ -160,6 +160,9 @@ th {
     width: 45%;
     margin: 0.5em 0.2px;
   }
+  .containerLabelInputsRadio {
+    margin: 0.5em 0.2px 0.5em 16px;
+  }
   table {
     margin: 0 auto;
     margin-bottom: 1rem;
@@ -175,5 +178,12 @@ th {
   td {
     padding: 8px 0px;
     max-width: 80px;
+    text-align: center;
+  }
+  .tdProductValue {
+    width: 40%;
+  }
+  .tdType {
+    width: 10%;
   }
 }
