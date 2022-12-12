@@ -65,12 +65,6 @@ export default function Manager() {
     setValues("");
   }
 
-  // function addLineWithEnter(event) {
-  //   if (event.key === "Enter") {
-  //     addLine();
-  //   }
-  // }
-
   useEffect(() => {
     setInputRadio(true);
 
