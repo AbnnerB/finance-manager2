@@ -11,8 +11,8 @@ import CardResults from "../../Components/CardResults";
 export default function Manager() {
   const [products, setProducts] = useState("");
   const [values, setValues] = useState("");
-  const [inputRadio, setInputRadio] = useState(true);
   const [id, setId] = useState(0);
+  const [inputRadio, setInputRadio] = useState({ typeInput: "entrada" });
 
   const [totalReceived, setTotalReceived] = useState(0);
   const [totalExpense, setTotalExpense] = useState(0);
@@ -40,7 +40,15 @@ export default function Manager() {
     }
   }, [values]);
 
-  function addLine() {
+  function handleInputRadioChange(e) {
+    const { name, value } = e.target;
+
+    setInputRadio({ ...inputRadio, [name]: value });
+  }
+
+  function addLine(e) {
+    e.preventDefault();
+
     if (products.length < 1 || values.length < 1) {
       alert("Preencha as caixas de textos");
       return;
@@ -54,7 +62,7 @@ export default function Manager() {
     const lineObj = {
       product: products,
       values: values,
-      valueType: inputRadio,
+      valueType: inputRadio.typeInput,
       id: id,
     };
     setId(id + 1);
@@ -66,13 +74,11 @@ export default function Manager() {
   }
 
   useEffect(() => {
-    setInputRadio(true);
-
     localStorage.setItem("arrayManagerLocal", JSON.stringify(arrayLine));
 
     function addReceived(total, item) {
       let totalTrue = 0;
-      if (item.valueType === true) {
+      if (item.valueType === "entrada") {
         totalTrue += parseFloat(item.values);
       }
 
@@ -80,7 +86,7 @@ export default function Manager() {
     }
     function addExpenses(total, item) {
       let totalFalse = 0;
-      if (item.valueType === false) {
+      if (item.valueType === "saida") {
         totalFalse += parseFloat(item.values);
       }
 
@@ -127,54 +133,63 @@ export default function Manager() {
         </section>
       </header>
       <div className="containerContent">
-        <section className="topoInputs">
+        <form className="topoInputs" onSubmit={addLine}>
           <div className="containerLabelInputs">
-            <label>Descrição</label>
-            <input
-              type="text"
-              name="inputName"
-              placeholder="Digite um nome"
-              value={products}
-              onChange={(e) => setProducts(e.target.value)}
-              autoFocus
-              maxLength="25"
-            />
+            <label>
+              Descrição
+              <input
+                type="text"
+                name="inputName"
+                placeholder="Digite um nome"
+                value={products}
+                onChange={(e) => setProducts(e.target.value)}
+                autoFocus
+                maxLength="25"
+              />
+            </label>
           </div>
           <div className="containerLabelInputs">
-            <label>Valor</label>
-            <input
-              type="number"
-              name="inputValue"
-              placeholder="Digite um valor"
-              value={values}
-              min="1"
-              onChange={(e) => setValues(e.target.value)}
-            />
+            <label>
+              Valor
+              <input
+                type="number"
+                name="inputValue"
+                placeholder="Digite um valor"
+                value={values}
+                min="1"
+                onChange={(e) => setValues(e.target.value)}
+              />
+            </label>
           </div>
           <div className="containerLabelInputsRadio">
             <div>
-              <input
-                type="radio"
-                name="typeInput"
-                checked
-                value={inputRadio}
-                onChange={(e) => setInputRadio(e.target.value)}
-                onClick={() => setInputRadio(true)}
-              />
-              <label>Entrada</label>
+              <label>
+                <input
+                  type="radio"
+                  name="typeInput"
+                  value="entrada"
+                  onChange={handleInputRadioChange}
+                  checked={inputRadio.typeInput === "entrada"}
+                />
+                Entrada
+              </label>
             </div>
             <div>
-              <input
-                type="radio"
-                name="typeInput"
-                onClick={() => setInputRadio(false)}
-              />
-              <label>Saida</label>
+              <label>
+                <input
+                  type="radio"
+                  name="typeInput"
+                  value="saida"
+                  onChange={handleInputRadioChange}
+                  checked={inputRadio.typeInput === "saida"}
+                />
+                Saida
+              </label>
             </div>
           </div>
 
-          <button onClick={addLine}>Adicionar</button>
-        </section>
+          <button>Adicionar</button>
+        </form>
         <section className="sectionTable">
           {arrayLine.length >= 1 && (
             <table border="1">
@@ -192,7 +207,7 @@ export default function Manager() {
                     <td className="tdProductValue">{item.product} </td>
                     <td className="tdProductValue">{`R$ ${item.values}`}</td>
                     <td className="tdType">
-                      {item.valueType ? (
+                      {item.valueType === "entrada" ? (
                         <FiArrowUpCircle size="20" color="green" />
                       ) : (
                         <FiArrowDownCircle size="20" color="red" />
