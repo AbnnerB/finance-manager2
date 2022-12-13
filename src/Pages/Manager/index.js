@@ -22,7 +22,7 @@ export default function Manager() {
     () => JSON.parse(localStorage.getItem("arrayManagerLocal")) || []
   );
 
-  // Aqui eu tenho o meu array dentro de arrayAllFinances
+  // Aqui eu tenho o meu array infoData dentro de arrayAllFinances
   const storedAllFinances =
     JSON.parse(localStorage.getItem("arrayAllFinances")) || [];
 
@@ -32,7 +32,7 @@ export default function Manager() {
 
   const [addInfoData, setAddInfoData] = useState(getInfoData);
 
-  console.log(getInfoData);
+  // console.log(getInfoData);
 
   // getInfoData[0] = { nome: "aaa" };
   // Aqui eu tenho o meu array dentro de arrayAllFinances
@@ -84,7 +84,9 @@ export default function Manager() {
 
     setArrayLine([...arrayLine, lineObj]);
 
-    setAddInfoData([...addInfoData, lineObj]);
+    getInfoData[0] = [lineObj];
+    console.log(getInfoData);
+
     // getInfoData[0] = lineObj;
 
     setProducts("");
