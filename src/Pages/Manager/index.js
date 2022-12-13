@@ -7,8 +7,11 @@ import { FiArrowUpCircle, FiArrowDownCircle } from "react-icons/fi";
 import { FaDollarSign } from "react-icons/fa";
 
 import CardResults from "../../Components/CardResults/CardResults";
+import { useParams } from "react-router-dom";
 
 export default function Manager() {
+  const idUrl = useParams();
+
   const [products, setProducts] = useState("");
   const [values, setValues] = useState("");
   const [id, setId] = useState(0);
@@ -23,8 +26,9 @@ export default function Manager() {
   );
 
   // Aqui eu tenho o meu array infoData dentro de arrayAllFinances
-  const storedAllFinances =
-    JSON.parse(localStorage.getItem("arrayAllFinances")) || [];
+  const [storedAllFinances, setStoredAllFinances] = useState(
+    JSON.parse(localStorage.getItem("arrayAllFinances")) || []
+  );
 
   let getInfoData = storedAllFinances.map((item) => {
     return item.infoData;
@@ -84,10 +88,25 @@ export default function Manager() {
 
     setArrayLine([...arrayLine, lineObj]);
 
-    getInfoData[0] = [lineObj];
-    console.log(getInfoData);
+    //por enquanto funciona, depois refatoro o codg
 
-    // getInfoData[0] = lineObj;
+    getInfoData[0] = [...arrayLine, lineObj];
+    console.log(getInfoData);
+    // console.log(storedAllFinances);
+    //por enquanto funciona
+
+    //por enquanto da erro
+    // let mapping = storedAllFinances.map((item) => {
+    //   if (item.id === idUrl) {
+    //     item.infoData = [...arrayLine, lineObj];
+    //   }
+    // });
+    //por enquanto da erro
+    // setStoredAllFinances(mapping);
+
+    console.log(storedAllFinances);
+
+    console.log(storedAllFinances);
 
     setProducts("");
     setValues("");

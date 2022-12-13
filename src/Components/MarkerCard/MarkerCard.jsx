@@ -1,5 +1,6 @@
 import { AiFillDelete } from "react-icons/ai";
-import { BsBookmarkDash, BsBookmarkPlus } from "react-icons/bs";
+// import { BsBookmarkDash, BsBookmarkPlus } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 export default function MarkerCard({ item, deleteContainerInfo }) {
   return (
@@ -19,6 +20,7 @@ export default function MarkerCard({ item, deleteContainerInfo }) {
         </div>
         {item.spots > 0 && <p>Ultima Marcação: {item.date} </p>}
       </div>
+      <Link to={`/manager/${item.id}`}>Detalhes</Link>
     </section>
   );
 }

@@ -8,7 +8,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<CreateManager />} />
-          <Route path="/manager" element={<Manager />} />
+          <Route path="/manager/:id" element={<Manager />} />
         </Routes>
       </BrowserRouter>
     </div>
