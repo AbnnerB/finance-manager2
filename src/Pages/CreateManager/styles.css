@@ -1,0 +1,207 @@
+.body {
+  background-color: rgb(43, 43, 49);
+  min-height: 100vh;
+  overflow-y: hidden !important;
+}
+
+.backgroundContainerCreate {
+  width: 100%;
+  min-height: 100vh;
+  height: 110vh;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.692);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerCreateMarker {
+  background-color: white;
+  border: 3px solid black;
+  max-width: 400px;
+  padding: 1rem;
+}
+
+.containerCreateMarker h2 {
+  margin-bottom: 1em;
+}
+
+.inputCreateMarker {
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.boxColors {
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.divButtonsCreateCancel {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+.containerCreateMarker div button {
+  padding: 0.3em 1rem;
+}
+
+header {
+  /* background-color: cadetblue; */
+  background-color: rgb(19, 19, 32);
+}
+
+.headerContent {
+  width: 80%;
+  margin: 0 auto;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.headerContent button {
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0 1em;
+  border-radius: 20px;
+}
+
+.containerMain {
+  max-width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.containerInfo {
+  border: 3px solid black;
+  border-radius: 12px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+.nameAndDeletteButton {
+  width: 100%;
+  height: 40%;
+  background-color: rgb(145, 142, 142);
+  color: rgb(255, 255, 255);
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed black;
+  border-radius: 12px 12px 0 0;
+}
+.titleName {
+  font-size: 2rem;
+  overflow-y: auto;
+  max-width: 200px;
+  white-space: nowrap;
+}
+
+.deleteButton {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 2rem;
+}
+
+.spots {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 1rem;
+  background-color: antiquewhite;
+  border-radius: 0px 0px 9px 9px;
+}
+.spotsFlex {
+  display: flex;
+}
+
+.spots span {
+  /* background-color: white; */
+  /* border: 3px solid black; */
+  padding: 0.38rem 0.6rem;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  /* height: 50%; */
+}
+
+.spots button {
+  columns: white;
+  background-color: transparent;
+  border: none;
+  font-size: 3.3rem;
+  display: flex;
+  align-self: center;
+  padding: 0px;
+}
+
+@media screen and (max-width: 430px) {
+  .headerContent {
+    padding: 0.5em 0.3rem;
+    width: 100%;
+    margin-bottom: 0px;
+  }
+  .headerContent h1 {
+    font-size: 1.2rem;
+  }
+  .headerContent button {
+    font-size: 1rem;
+  }
+
+  .containerMain {
+    margin: 0px;
+    min-width: 100px;
+    max-width: 100%;
+    display: block;
+  }
+
+  .containerInfo {
+    border: none;
+    border-bottom: 3px solid black;
+
+    min-width: 100px;
+    width: 100%;
+    max-width: 450px;
+  }
+
+  .containerInfo,
+  .nameAndDeletteButton,
+  .spots {
+    border-radius: 0px 0px 0px 0px;
+  }
+
+  .nameAndDeletteButton {
+    border: none;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .deleteButton {
+    font-size: 1.4rem;
+  }
+  .titleName {
+    font-size: 1.4rem;
+  }
+  .spots {
+    gap: 0;
+    padding: 1rem;
+  }
+  .spots span {
+    font-size: 1.4rem;
+  }
+  .spots button {
+    font-size: 1.4rem;
+  }
+}

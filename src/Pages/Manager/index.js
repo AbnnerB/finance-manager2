@@ -6,7 +6,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { FiArrowUpCircle, FiArrowDownCircle } from "react-icons/fi";
 import { FaDollarSign } from "react-icons/fa";
 
-import CardResults from "../../Components/CardResults";
+import CardResults from "../../Components/CardResults/CardResults";
 
 export default function Manager() {
   const [products, setProducts] = useState("");
@@ -21,6 +21,21 @@ export default function Manager() {
   const [arrayLine, setArrayLine] = useState(
     () => JSON.parse(localStorage.getItem("arrayManagerLocal")) || []
   );
+
+  // Aqui eu tenho o meu array dentro de arrayAllFinances
+  const storedAllFinances =
+    JSON.parse(localStorage.getItem("arrayAllFinances")) || [];
+
+  let getInfoData = storedAllFinances.map((item) => {
+    return item.infoData;
+  });
+
+  const [addInfoData, setAddInfoData] = useState(getInfoData);
+
+  console.log(getInfoData);
+
+  // getInfoData[0] = { nome: "aaa" };
+  // Aqui eu tenho o meu array dentro de arrayAllFinances
 
   useEffect(() => {
     let storedArray =
@@ -68,6 +83,9 @@ export default function Manager() {
     setId(id + 1);
 
     setArrayLine([...arrayLine, lineObj]);
+
+    setAddInfoData([...addInfoData, lineObj]);
+    // getInfoData[0] = lineObj;
 
     setProducts("");
     setValues("");
