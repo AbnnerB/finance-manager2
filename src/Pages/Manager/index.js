@@ -22,8 +22,9 @@ export default function Manager() {
   const [totalExpense, setTotalExpense] = useState(0);
   const [finalResult, setFinalResult] = useState(0);
 
-  const storedAllFinances =
-    JSON.parse(localStorage.getItem("arrayAllFinances")) || [];
+  const [storedAllFinances, setStoredAllFinances] = useState(
+    JSON.parse(localStorage.getItem("arrayAllFinances")) || []
+  );
 
   const [addInfoDataArray, setAddInfoDataArray] = useState(
     storedAllFinances[idUrlNumber].infoData || []
@@ -75,10 +76,9 @@ export default function Manager() {
     setId(id + 1);
 
     setAddInfoDataArray([...addInfoDataArray, lineObj]);
-
     storedAllFinances[idUrlNumber].infoData = addInfoDataArray;
-    console.log(storedAllFinances);
 
+    setStoredAllFinances(storedAllFinances);
     setProducts("");
     setValues("");
   }
@@ -115,7 +115,6 @@ export default function Manager() {
   }, [storedAllFinances, addInfoDataArray, idUrlNumber]);
 
   function deleteLine(id) {
-    //tentativa 2
     let filtered2 = addInfoDataArray.filter((line) => line.id !== id);
     setAddInfoDataArray(filtered2);
     storedAllFinances[idUrlNumber].infoData = addInfoDataArray;
