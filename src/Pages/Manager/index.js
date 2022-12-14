@@ -96,11 +96,18 @@ export default function Manager() {
     console.log(storedAllFinances);
     //Adicionando dentro do meu novo array
 
+    // setStoredAllFinances([
+    //   ...storedAllFinances,
+    //   (storedAllFinances[idUrl].infoData = addInfoDataArray),
+    // ]);
+
     setProducts("");
     setValues("");
   }
 
   useEffect(() => {
+    storedAllFinances[idUrlNumber].infoData = addInfoDataArray;
+
     localStorage.setItem("arrayManagerLocal", JSON.stringify(arrayLine));
     localStorage.setItem("arrayAllFinances", JSON.stringify(storedAllFinances));
 
@@ -133,7 +140,7 @@ export default function Manager() {
     setTotalExpense(resultExpenses);
 
     setFinalResult(resultReceived - resultExpenses);
-  }, [arrayLine, storedAllFinances]);
+  }, [storedAllFinances, addInfoDataArray, arrayLine]);
 
   function deleteLine(id) {
     let filtered = arrayLine.filter((line) => line.id !== id);
