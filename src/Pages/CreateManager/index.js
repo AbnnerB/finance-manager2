@@ -10,7 +10,7 @@ export default function CreateManager() {
   const points = 0;
   const [ids, setIds] = useState(0);
 
-  const [now, setNow] = useState("");
+  const now = new Date().toLocaleDateString();
   // const dateToday = new Date().toLocaleTimeString();
 
   const [showContainer, setShowContainer] = useState(false);

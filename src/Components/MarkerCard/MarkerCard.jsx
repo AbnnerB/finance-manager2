@@ -15,6 +15,7 @@ export default function MarkerCard({ item, deleteContainerInfo }) {
         </button>
       </div>
       <div className="spots">
+        <span>Criado dia {item.date}</span>
         <div className="spotsFlex">
           <span>{item.spots}</span>
         </div>

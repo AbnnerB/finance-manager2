@@ -22,25 +22,12 @@ export default function Manager() {
   const [totalExpense, setTotalExpense] = useState(0);
   const [finalResult, setFinalResult] = useState(0);
 
-  const [arrayLine, setArrayLine] = useState(
-    () => JSON.parse(localStorage.getItem("arrayManagerLocal")) || []
-  );
-
-  // Aqui eu tenho o meu array. "arrayAllFinances"
-  const [storedAllFinances, setStoredAllFinances] = useState(
-    JSON.parse(localStorage.getItem("arrayAllFinances")) || []
-  );
+  const storedAllFinances =
+    JSON.parse(localStorage.getItem("arrayAllFinances")) || [];
 
   const [addInfoDataArray, setAddInfoDataArray] = useState(
-    storedAllFinances[idUrlNumber].infoData
+    storedAllFinances[idUrlNumber].infoData || []
   );
-
-  // console.log(addInfoDataArray);
-
-  //Acredito ter achado a forma para inserir informacoes dentro do array infoData(o array q esta dentro do meu objeto)
-  // console.log((storedAllFinances[idUrlNumber].infoData = addInfoDataArray));
-
-  // console.log(storedAllFinances);
 
   useEffect(() => {
     let storedArray =
@@ -87,8 +74,6 @@ export default function Manager() {
     };
     setId(id + 1);
 
-    setArrayLine([...arrayLine, lineObj]);
-
     setAddInfoDataArray([...addInfoDataArray, lineObj]);
 
     storedAllFinances[idUrlNumber].infoData = addInfoDataArray;
@@ -100,9 +85,8 @@ export default function Manager() {
 
   useEffect(() => {
     storedAllFinances[idUrlNumber].infoData = addInfoDataArray;
-
-    localStorage.setItem("arrayManagerLocal", JSON.stringify(arrayLine));
     localStorage.setItem("arrayAllFinances", JSON.stringify(storedAllFinances));
+    // setStoredAllFinances(storedAllFinances);
 
     function addReceived(total, item) {
       let totalTrue = 0;
@@ -121,11 +105,6 @@ export default function Manager() {
       return total + totalFalse;
     }
 
-    // const resultReceived = storedAllFinances[idUrlNumber].infoData.reduce(
-    //   addReceived,
-    //   0
-    // );
-
     const resultReceived = addInfoDataArray.reduce(addReceived, 0);
     setTotalReceived(resultReceived);
 
@@ -133,18 +112,14 @@ export default function Manager() {
     setTotalExpense(resultExpenses);
 
     setFinalResult(resultReceived - resultExpenses);
-  }, [storedAllFinances, addInfoDataArray, arrayLine]);
+  }, [storedAllFinances, addInfoDataArray, idUrlNumber]);
 
   function deleteLine(id) {
-    let filtered = arrayLine.filter((line) => line.id !== id);
-    setArrayLine(filtered);
-
     //tentativa 2
     let filtered2 = addInfoDataArray.filter((line) => line.id !== id);
     setAddInfoDataArray(filtered2);
     storedAllFinances[idUrlNumber].infoData = addInfoDataArray;
 
-    localStorage.setItem("arrayManagerLocal", JSON.stringify(filtered));
     localStorage.setItem("arrayAllFinances", JSON.stringify(storedAllFinances));
   }
 
@@ -230,7 +205,7 @@ export default function Manager() {
           <button>Adicionar</button>
         </form>
         <section className="sectionTable">
-          {arrayLine.length >= 1 && (
+          {addInfoDataArray.length >= 1 && (
             <table border="1">
               <thead>
                 <tr>
