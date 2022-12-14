@@ -20,6 +20,8 @@ export default function CreateManager() {
   );
 
   useEffect(() => {
+    // alert("bom dia");
+
     localStorage.setItem(
       "arrayAllFinances",
       JSON.stringify(arrayContainerInfo)
@@ -64,6 +66,7 @@ export default function CreateManager() {
     setArrayContainerInfo([...arrayContainerInfo, newObj]);
     showContainerCreateMarker();
     setNames("");
+    window.location.reload();
   }
 
   function deleteContainerInfo(id) {
@@ -75,6 +78,8 @@ export default function CreateManager() {
       setArrayContainerInfo(filtered);
       localStorage.setItem("arrayAllFinances", JSON.stringify(filtered));
     }
+
+    window.location.reload();
   }
 
   return (
