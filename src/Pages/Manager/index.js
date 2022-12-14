@@ -89,17 +89,10 @@ export default function Manager() {
 
     setArrayLine([...arrayLine, lineObj]);
 
-    //Adicionando dentro do meu novo array
     setAddInfoDataArray([...addInfoDataArray, lineObj]);
 
     storedAllFinances[idUrlNumber].infoData = addInfoDataArray;
     console.log(storedAllFinances);
-    //Adicionando dentro do meu novo array
-
-    // setStoredAllFinances([
-    //   ...storedAllFinances,
-    //   (storedAllFinances[idUrl].infoData = addInfoDataArray),
-    // ]);
 
     setProducts("");
     setValues("");
