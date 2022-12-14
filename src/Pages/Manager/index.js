@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 
 export default function Manager() {
   const idUrl = useParams();
+  const idUrlNumber = parseInt(idUrl.id);
 
   const [products, setProducts] = useState("");
   const [values, setValues] = useState("");
@@ -25,21 +26,21 @@ export default function Manager() {
     () => JSON.parse(localStorage.getItem("arrayManagerLocal")) || []
   );
 
-  // Aqui eu tenho o meu array infoData dentro de arrayAllFinances
+  // Aqui eu tenho o meu array. "arrayAllFinances"
   const [storedAllFinances, setStoredAllFinances] = useState(
     JSON.parse(localStorage.getItem("arrayAllFinances")) || []
   );
 
-  let getInfoData = storedAllFinances.map((item) => {
-    return item.infoData;
-  });
+  const [addInfoDataArray, setAddInfoDataArray] = useState(
+    storedAllFinances[idUrlNumber].infoData
+  );
 
-  const [addInfoData, setAddInfoData] = useState(getInfoData);
+  // console.log(addInfoDataArray);
 
-  // console.log(getInfoData);
+  //Acredito ter achado a forma para inserir informacoes dentro do array infoData(o array q esta dentro do meu objeto)
+  // console.log((storedAllFinances[idUrlNumber].infoData = addInfoDataArray));
 
-  // getInfoData[0] = { nome: "aaa" };
-  // Aqui eu tenho o meu array dentro de arrayAllFinances
+  // console.log(storedAllFinances);
 
   useEffect(() => {
     let storedArray =
@@ -88,10 +89,15 @@ export default function Manager() {
 
     setArrayLine([...arrayLine, lineObj]);
 
+    setAddInfoDataArray([...addInfoDataArray, lineObj]);
+
+    console.log((storedAllFinances[idUrlNumber].infoData = addInfoDataArray));
+    console.log(storedAllFinances);
+
     //por enquanto funciona, depois refatoro o codg
 
-    getInfoData[0] = [...arrayLine, lineObj];
-    console.log(getInfoData);
+    // getInfoData[0] = [...arrayLine, lineObj];
+    // console.log(getInfoData);
     // console.log(storedAllFinances);
     //por enquanto funciona
 
@@ -103,10 +109,6 @@ export default function Manager() {
     // });
     //por enquanto da erro
     // setStoredAllFinances(mapping);
-
-    console.log(storedAllFinances);
-
-    console.log(storedAllFinances);
 
     setProducts("");
     setValues("");

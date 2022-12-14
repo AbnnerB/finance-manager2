@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 import MarkerCard from "../../Components/MarkerCard/MarkerCard";
@@ -11,7 +11,7 @@ export default function CreateManager() {
   const [ids, setIds] = useState(0);
 
   const [now, setNow] = useState("");
-  const dateToday = new Date().toLocaleTimeString();
+  // const dateToday = new Date().toLocaleTimeString();
 
   const [showContainer, setShowContainer] = useState(false);
 
