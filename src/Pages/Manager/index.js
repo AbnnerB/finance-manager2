@@ -121,10 +121,15 @@ export default function Manager() {
       return total + totalFalse;
     }
 
-    const resultReceived = arrayLine.reduce(addReceived, 0);
+    // const resultReceived = storedAllFinances[idUrlNumber].infoData.reduce(
+    //   addReceived,
+    //   0
+    // );
+
+    const resultReceived = addInfoDataArray.reduce(addReceived, 0);
     setTotalReceived(resultReceived);
 
-    const resultExpenses = arrayLine.reduce(addExpenses, 0);
+    const resultExpenses = addInfoDataArray.reduce(addExpenses, 0);
     setTotalExpense(resultExpenses);
 
     setFinalResult(resultReceived - resultExpenses);
@@ -134,9 +139,15 @@ export default function Manager() {
     let filtered = arrayLine.filter((line) => line.id !== id);
     setArrayLine(filtered);
 
+    //tentativa 1
+    //let filtered2 = addInfoDataArray.filter((line) => line.id !== id);
+    //setAddInfoDataArray(filtered2);
+    // storedAllFinances[idUrlNumber].infoData = addInfoDataArray;
+    // localStorage.setItem("arrayAllFinances", JSON.stringify(storedAllFinances));
+
+    //tentativa 2
     let filtered2 = addInfoDataArray.filter((line) => line.id !== id);
     setAddInfoDataArray(filtered2);
-
     storedAllFinances[idUrlNumber].infoData = addInfoDataArray;
 
     localStorage.setItem("arrayManagerLocal", JSON.stringify(filtered));
@@ -236,7 +247,7 @@ export default function Manager() {
                 </tr>
               </thead>
               <tbody>
-                {storedAllFinances[idUrlNumber].infoData.map((item, index) => (
+                {addInfoDataArray.map((item, index) => (
                   <tr key={index}>
                     <td className="tdProductValue">{item.product} </td>
                     <td className="tdProductValue">{`R$ ${item.values}`}</td>
