@@ -139,12 +139,6 @@ export default function Manager() {
     let filtered = arrayLine.filter((line) => line.id !== id);
     setArrayLine(filtered);
 
-    //tentativa 1
-    //let filtered2 = addInfoDataArray.filter((line) => line.id !== id);
-    //setAddInfoDataArray(filtered2);
-    // storedAllFinances[idUrlNumber].infoData = addInfoDataArray;
-    // localStorage.setItem("arrayAllFinances", JSON.stringify(storedAllFinances));
-
     //tentativa 2
     let filtered2 = addInfoDataArray.filter((line) => line.id !== id);
     setAddInfoDataArray(filtered2);
