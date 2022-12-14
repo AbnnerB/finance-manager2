@@ -89,26 +89,12 @@ export default function Manager() {
 
     setArrayLine([...arrayLine, lineObj]);
 
+    //Adicionando dentro do meu novo array
     setAddInfoDataArray([...addInfoDataArray, lineObj]);
 
-    console.log((storedAllFinances[idUrlNumber].infoData = addInfoDataArray));
+    storedAllFinances[idUrlNumber].infoData = addInfoDataArray;
     console.log(storedAllFinances);
-
-    //por enquanto funciona, depois refatoro o codg
-
-    // getInfoData[0] = [...arrayLine, lineObj];
-    // console.log(getInfoData);
-    // console.log(storedAllFinances);
-    //por enquanto funciona
-
-    //por enquanto da erro
-    // let mapping = storedAllFinances.map((item) => {
-    //   if (item.id === idUrl) {
-    //     item.infoData = [...arrayLine, lineObj];
-    //   }
-    // });
-    //por enquanto da erro
-    // setStoredAllFinances(mapping);
+    //Adicionando dentro do meu novo array
 
     setProducts("");
     setValues("");
@@ -116,6 +102,7 @@ export default function Manager() {
 
   useEffect(() => {
     localStorage.setItem("arrayManagerLocal", JSON.stringify(arrayLine));
+    localStorage.setItem("arrayAllFinances", JSON.stringify(storedAllFinances));
 
     function addReceived(total, item) {
       let totalTrue = 0;
@@ -141,13 +128,19 @@ export default function Manager() {
     setTotalExpense(resultExpenses);
 
     setFinalResult(resultReceived - resultExpenses);
-  }, [arrayLine]);
+  }, [arrayLine, storedAllFinances]);
 
   function deleteLine(id) {
     let filtered = arrayLine.filter((line) => line.id !== id);
     setArrayLine(filtered);
 
+    let filtered2 = addInfoDataArray.filter((line) => line.id !== id);
+    setAddInfoDataArray(filtered2);
+
+    storedAllFinances[idUrlNumber].infoData = addInfoDataArray;
+
     localStorage.setItem("arrayManagerLocal", JSON.stringify(filtered));
+    localStorage.setItem("arrayAllFinances", JSON.stringify(storedAllFinances));
   }
 
   return (
@@ -243,7 +236,7 @@ export default function Manager() {
                 </tr>
               </thead>
               <tbody>
-                {arrayLine.map((item, index) => (
+                {storedAllFinances[idUrlNumber].infoData.map((item, index) => (
                   <tr key={index}>
                     <td className="tdProductValue">{item.product} </td>
                     <td className="tdProductValue">{`R$ ${item.values}`}</td>
