@@ -13,9 +13,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 .containerCreateMarker {
+  z-index: 3;
   background-color: white;
   border: 3px solid black;
   max-width: 400px;
@@ -50,7 +52,8 @@
 .headerCreateManager {
   /* background-color: rgb(19, 19, 32); */
   /* background-color: rgb(66, 214, 115); */
-  background-color: rgb(28, 151, 182);
+  /* background-color: rgb(28, 151, 182); */
+  background-color: rgb(27, 121, 145);
   margin-bottom: 2rem;
 }
 

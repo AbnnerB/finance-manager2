@@ -1,5 +1,3 @@
-// import { Link } from "react-router-dom";
-
 import { useState, useEffect } from "react";
 import MarkerCard from "../../Components/MarkerCard/MarkerCard";
 
@@ -7,11 +5,8 @@ import "./styles.css";
 
 export default function CreateManager() {
   const [names, setNames] = useState("");
-  const points = 0;
   const [ids, setIds] = useState(0);
-
   const now = new Date().toLocaleDateString();
-  // const dateToday = new Date().toLocaleTimeString();
 
   const [showContainer, setShowContainer] = useState(false);
 
@@ -20,8 +15,6 @@ export default function CreateManager() {
   );
 
   useEffect(() => {
-    // alert("bom dia");
-
     localStorage.setItem(
       "arrayAllFinances",
       JSON.stringify(arrayContainerInfo)
@@ -57,9 +50,9 @@ export default function CreateManager() {
     const newObj = {
       id: ids,
       name: names,
-      spots: points,
       infoData: [],
       date: now,
+      resultTotal: 0,
     };
     setIds(ids + 1);
 
@@ -89,7 +82,7 @@ export default function CreateManager() {
         className="backgroundContainerCreate"
       >
         <section className="containerCreateMarker">
-          <h2>Adicione um novo participante!</h2>
+          <h2>Adicionar</h2>
 
           <input
             type="text"
@@ -110,7 +103,7 @@ export default function CreateManager() {
 
       <header className="headerCreateManager">
         <div className="headerContent">
-          <h1>Controle de finanças</h1>
+          <h1>Controle de Finanças</h1>
           <button onClick={showContainerCreateMarker}>Adicionar</button>
         </div>
       </header>

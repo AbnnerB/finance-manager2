@@ -84,10 +84,6 @@ export default function Manager() {
   }
 
   useEffect(() => {
-    storedAllFinances[idUrlNumber].infoData = addInfoDataArray;
-    localStorage.setItem("arrayAllFinances", JSON.stringify(storedAllFinances));
-    // setStoredAllFinances(storedAllFinances);
-
     function addReceived(total, item) {
       let totalTrue = 0;
       if (item.valueType === "entrada") {
@@ -112,7 +108,12 @@ export default function Manager() {
     setTotalExpense(resultExpenses);
 
     setFinalResult(resultReceived - resultExpenses);
-  }, [storedAllFinances, addInfoDataArray, idUrlNumber]);
+
+    storedAllFinances[idUrlNumber].resultTotal = finalResult;
+
+    storedAllFinances[idUrlNumber].infoData = addInfoDataArray;
+    localStorage.setItem("arrayAllFinances", JSON.stringify(storedAllFinances));
+  }, [storedAllFinances, addInfoDataArray, idUrlNumber, finalResult]);
 
   function deleteLine(id) {
     let filtered2 = addInfoDataArray.filter((line) => line.id !== id);
