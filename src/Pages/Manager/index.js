@@ -33,19 +33,22 @@ export default function Manager() {
 
   useEffect(() => {
     let storedArray =
-      JSON.parse(localStorage.getItem("arrayManagerLocal")) || [];
-    let getId = storedArray.map((task) => {
+      JSON.parse(localStorage.getItem("arrayAllFinances")) || [];
+
+    let storedInfoArray = storedArray[idUrlNumber].infoData;
+
+    let getId = storedInfoArray.map((task) => {
       return task.id;
     });
 
     let lastId = getId[getId.length - 1];
 
     setId(lastId + 1 || 0);
-  }, []);
+  }, [idUrlNumber]);
 
   useEffect(() => {
-    if (values.length > 6) {
-      setValues("99999");
+    if (values.length > 9) {
+      setValues("999999999");
     }
   }, [values]);
 
@@ -154,7 +157,7 @@ export default function Manager() {
         </section>
       </header>
       <div className="containerContent">
-        <form className="topoInputs" onSubmit={addLine}>
+        <section className="topoInputs">
           <div className="containerLabelInputs">
             <label>
               Descrição
@@ -209,8 +212,8 @@ export default function Manager() {
             </div>
           </div>
 
-          <button>Adicionar</button>
-        </form>
+          <button onClick={addLine}>Adicionar</button>
+        </section>
         <section className="sectionTable">
           {addInfoDataArray.length >= 1 && (
             <table border="1">
