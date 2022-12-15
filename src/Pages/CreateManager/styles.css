@@ -146,6 +146,22 @@
   right: 5px;
 }
 
+@media screen and (max-width: 850px) {
+  .titleName {
+    max-width: 400px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .titleName {
+    max-width: 300px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .titleName {
+    max-width: 250px;
+  }
+}
+
 @media screen and (max-width: 430px) {
   .headerContent {
     padding: 0.5em 0.3rem;
@@ -173,6 +189,7 @@
   }
   .titleName {
     font-size: 1.4rem;
+    max-width: 200px;
   }
 
   .moneyCard {
