@@ -33,13 +33,6 @@
   display: block;
 }
 
-/* .boxColors {
-  width: 100%;
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-} */
-
 .divButtonsCreateCancel {
   margin-top: 1rem;
   display: flex;
@@ -58,12 +51,13 @@
 }
 
 .headerContent {
+  margin: 0 auto;
   width: 80%;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 1.5rem 0 2.5rem 0;
 }
 
 .headerContent button {
@@ -125,9 +119,8 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  padding: 3rem 0;
+  padding: 3.5rem 0;
   background-color: rgb(255, 255, 255);
-
   position: relative;
 }
 
@@ -147,7 +140,7 @@
 @media screen and (max-width: 430px) {
   .headerContent {
     padding: 0.5em 0.3rem;
-    width: 100%;
+    width: 90%;
     margin-bottom: 0px;
   }
   .headerContent h1 {
@@ -158,25 +151,7 @@
   }
 
   .containerMain {
-    margin: 0px;
-    min-width: 100px;
-    max-width: 100%;
-    display: block;
-  }
-
-  .containerInfo {
-    border: none;
-    border-bottom: 3px solid black;
-
-    min-width: 100px;
-    width: 100%;
-    max-width: 450px;
-  }
-
-  .containerInfo,
-  .nameAndDeletteButton,
-  .spots {
-    border-radius: 0px 0px 0px 0px;
+    max-width: 90%;
   }
 
   .nameAndDeletteButton {
@@ -190,11 +165,8 @@
   .titleName {
     font-size: 1.4rem;
   }
-  .spots {
-    gap: 0;
-    padding: 1rem;
-  }
-  .spots span {
-    font-size: 1.4rem;
+
+  .moneyCard {
+    font-size: 2.4rem;
   }
 }

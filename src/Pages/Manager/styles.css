@@ -1,16 +1,30 @@
-header {
-  background-color: rgb(10, 206, 141);
+.headerManager {
+  /* background-color: rgb(10, 206, 141); */
+  background-color: rgb(27, 121, 145);
   position: relative;
   height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-h1 {
-  padding: 1rem 0;
-  text-align: center;
+
+.nameAndLinkReturn {
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
   color: #ffffff;
 }
+.nameAndLinkReturn a {
+  color: #ffffff;
+  font-size: 2rem;
+  position: absolute;
+  left: 0;
+}
+
 .containerCards {
   max-width: 800px;
   width: 100%;
@@ -30,6 +44,8 @@ h1 {
 }
 
 .topoInputs {
+  box-shadow: 2px 1px 10px 2px rgb(185, 185, 185);
+
   padding-top: 1rem;
   display: flex;
   gap: 1rem;
@@ -77,6 +93,8 @@ h1 {
 
 .sectionTable {
   margin-top: 3rem;
+  box-shadow: 2px 1px 10px 2px rgb(185, 185, 185);
+
   justify-content: center;
 }
 
@@ -119,13 +137,10 @@ th {
 }
 
 @media screen and (max-width: 640px) {
-  header {
+  .headerManager {
     height: auto;
     padding-bottom: 1rem;
-    background-color: rgb(232, 232, 233);
-  }
-  header h1 {
-    color: black;
+    /* background-color: rgb(232, 232, 233); */
   }
 
   .containerCards {
@@ -138,6 +153,7 @@ th {
     flex-wrap: wrap;
     gap: 1rem;
     margin: 0 auto;
+    margin-top: 1rem;
   }
   .containerContent {
     max-width: 800px;

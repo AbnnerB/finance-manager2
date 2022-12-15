@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 
 import "./styles.css";
 
+import CardResults from "../../Components/CardResults/CardResults";
+import { Link, useParams } from "react-router-dom";
+
 import { AiFillDelete } from "react-icons/ai";
 import { FiArrowUpCircle, FiArrowDownCircle } from "react-icons/fi";
 import { FaDollarSign } from "react-icons/fa";
-
-import CardResults from "../../Components/CardResults/CardResults";
-import { useParams } from "react-router-dom";
+import { GoArrowLeft } from "react-icons/go";
 
 export default function Manager() {
   const idUrl = useParams();
@@ -125,8 +126,14 @@ export default function Manager() {
 
   return (
     <>
-      <header>
-        <h1>Gestor de finanças</h1>
+      <header className="headerManager">
+        <div className="nameAndLinkReturn">
+          <Link to="/">
+            <GoArrowLeft title="Voltar a Pagina incial" />
+          </Link>
+
+          <h1>{storedAllFinances[idUrlNumber].name}</h1>
+        </div>
 
         <section className="containerCards">
           <CardResults
