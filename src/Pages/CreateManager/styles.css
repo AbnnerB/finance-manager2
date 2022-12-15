@@ -1,5 +1,5 @@
 .body {
-  background-color: rgb(43, 43, 49);
+  /* background-color: rgb(43, 43, 49); */
   min-height: 100vh;
   overflow-y: hidden !important;
 }
@@ -10,7 +10,6 @@
   height: 110vh;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.692);
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,12 +31,12 @@
   display: block;
 }
 
-.boxColors {
+/* .boxColors {
   width: 100%;
   margin-bottom: 1rem;
   display: flex;
   justify-content: space-between;
-}
+} */
 
 .divButtonsCreateCancel {
   margin-top: 1rem;
@@ -48,60 +47,64 @@
   padding: 0.3em 1rem;
 }
 
-header {
-  /* background-color: cadetblue; */
-  background-color: rgb(19, 19, 32);
+.headerCreateManager {
+  /* background-color: rgb(19, 19, 32); */
+  /* background-color: rgb(66, 214, 115); */
+  background-color: rgb(28, 151, 182);
+  margin-bottom: 2rem;
 }
 
 .headerContent {
   width: 80%;
-  margin: 0 auto;
   color: white;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem 0;
-  margin-bottom: 2rem;
 }
 
 .headerContent button {
   font-size: 1em;
   font-weight: bold;
-  padding: 0 1em;
+  padding: 0.5rem 1rem;
   border-radius: 20px;
+  border: none;
+  color: rgb(28, 151, 182);
 }
 
 .containerMain {
   max-width: 80%;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column-reverse;
   gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .containerInfo {
-  border: 3px solid black;
-  border-radius: 12px;
-  min-width: 300px;
+  /* border: 3px solid black; */
+  /* border-radius: 12px; */
+  /* min-width: 300px; */
   display: flex;
   flex-direction: column;
+  box-shadow: 1px 1px 8px 1px rgb(116, 116, 116);
 }
 .nameAndDeletteButton {
   width: 100%;
-  height: 40%;
-  background-color: rgb(145, 142, 142);
+  /* height: 40%; */
+  /* background-color: rgb(145, 142, 142); */
+  background-color: rgb(28, 151, 182);
   color: rgb(255, 255, 255);
   padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px dashed black;
-  border-radius: 12px 12px 0 0;
+  /* border-radius: 12px 12px 0 0; */
 }
 .titleName {
   font-size: 2rem;
   overflow-y: auto;
-  max-width: 200px;
+  max-width: 600px;
   white-space: nowrap;
 }
 
@@ -114,38 +117,28 @@ header {
 
 .spots {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  padding: 2rem 1rem;
-  background-color: antiquewhite;
-  border-radius: 0px 0px 9px 9px;
-}
-.spotsFlex {
-  display: flex;
+  padding: 3rem 0;
+  background-color: rgb(255, 255, 255);
+
+  position: relative;
 }
 
-.spots span {
-  /* background-color: white; */
-  /* border: 3px solid black; */
-  padding: 0.38rem 0.6rem;
-  font-size: 3rem;
-  display: flex;
-  align-items: center;
-  /* height: 50%; */
+.moneyCard {
+  font-size: 3.2rem;
+  color: black;
+  text-decoration: none;
 }
 
-.spots button {
-  columns: white;
-  background-color: transparent;
-  border: none;
-  font-size: 3.3rem;
-  display: flex;
-  align-self: center;
-  padding: 0px;
+.createDate {
+  font-size: 1.3rem;
+  position: absolute;
+  bottom: 2px;
+  right: 5px;
 }
 
 @media screen and (max-width: 430px) {
@@ -199,9 +192,6 @@ header {
     padding: 1rem;
   }
   .spots span {
-    font-size: 1.4rem;
-  }
-  .spots button {
     font-size: 1.4rem;
   }
 }

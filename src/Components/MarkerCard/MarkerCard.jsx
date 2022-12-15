@@ -1,5 +1,4 @@
 import { AiFillDelete } from "react-icons/ai";
-// import { BsBookmarkDash, BsBookmarkPlus } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 export default function MarkerCard({ item, deleteContainerInfo }) {
@@ -15,13 +14,13 @@ export default function MarkerCard({ item, deleteContainerInfo }) {
         </button>
       </div>
       <div className="spots">
-        <span>Criado dia {item.date}</span>
-        <div className="spotsFlex">
-          <span>{item.spots}</span>
+        <span className="createDate">Criado dia {item.date}</span>
+        <div>
+          <Link className="moneyCard" to={`/manager/${item.id}`}>
+            {item.spots}
+          </Link>
         </div>
-        {item.spots > 0 && <p>Ultima Marcação: {item.date} </p>}
       </div>
-      <Link to={`/manager/${item.id}`}>Detalhes</Link>
     </section>
   );
 }

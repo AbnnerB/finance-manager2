@@ -108,9 +108,9 @@ export default function CreateManager() {
         </section>
       </article>
 
-      <header>
+      <header className="headerCreateManager">
         <div className="headerContent">
-          <h1>Crie seu mês </h1>
+          <h1>Controle de finanças</h1>
           <button onClick={showContainerCreateMarker}>Adicionar</button>
         </div>
       </header>
