@@ -87,7 +87,7 @@ export default function CreateManager() {
           <input
             type="text"
             maxLength="50"
-            placeholder="Digite um nome..."
+            placeholder="Digite aqui..."
             value={names}
             onChange={(e) => setNames(e.target.value)}
             autoFocus
