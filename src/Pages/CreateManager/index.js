@@ -82,11 +82,11 @@ export default function CreateManager() {
         className="backgroundContainerCreate"
       >
         <section className="containerCreateMarker">
-          <h2>Adicionar</h2>
+          <h2>Adicionar...</h2>
 
           <input
             type="text"
-            maxLength="20"
+            maxLength="50"
             placeholder="Digite um nome..."
             value={names}
             onChange={(e) => setNames(e.target.value)}

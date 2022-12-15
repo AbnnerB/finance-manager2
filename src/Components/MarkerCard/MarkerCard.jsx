@@ -16,7 +16,7 @@ export default function MarkerCard({ item, deleteContainerInfo }) {
         </button>
       </div>
       <div className="spots">
-        <span className="createDate">Criado dia {item.date}</span>
+        <span className="createDate">Criado dia: {item.date}</span>
         <div>
           <Link
             className="moneyCard"
