@@ -59,8 +59,6 @@ export default function Manager() {
   }
 
   function addLine(e) {
-    e.preventDefault();
-
     if (products.length < 1 || values.length < 1) {
       alert("Preencha as caixas de textos");
       return;
