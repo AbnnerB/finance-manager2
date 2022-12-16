@@ -1,7 +1,7 @@
 import { AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-export default function MarkerCard({ item, deleteContainerInfo }) {
+export default function MarkerCard({ item, deleteContainerInfo, index }) {
   const valueCard = item.resultTotal;
 
   return (
@@ -20,7 +20,7 @@ export default function MarkerCard({ item, deleteContainerInfo }) {
         <div>
           <Link
             className="moneyCard"
-            to={`/manager/${item.id}`}
+            to={`/manager/${index}`}
             style={valueCard < 0 ? { color: "red" } : { color: "green" }}
           >
             {valueCard.toLocaleString("pt-br", {

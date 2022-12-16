@@ -29,7 +29,7 @@ export default function CreateManager() {
 
     let lastId = getId[getId.length - 1];
 
-    console.log(lastId);
+    // console.log(lastId);
 
     setIds(lastId + 1 || 0);
   }, []);
@@ -79,21 +79,21 @@ export default function CreateManager() {
 
     //Alteração para corrigir o erro nos ids
 
-    let storedArray = JSON.parse(localStorage.getItem("arrayAllFinances"));
-    let getId = storedArray.map((task) => {
-      return task.id;
-    });
+    // let storedArray = JSON.parse(localStorage.getItem("arrayAllFinances"));
+    // let getId = storedArray.map((task) => {
+    //   return task.id;
+    // });
 
-    let lastId = getId[getId.length - 1];
+    // let lastId = getId[getId.length - 1];
 
-    // setIds(lastId + 1 || 0);
+    // // setIds(lastId + 1 || 0);
 
-    arrayContainerInfo.id = lastId;
+    // arrayContainerInfo.id = lastId;
 
-    localStorage.setItem(
-      "arrayAllFinances",
-      JSON.stringify(arrayContainerInfo)
-    );
+    // localStorage.setItem(
+    //   "arrayAllFinances",
+    //   JSON.stringify(arrayContainerInfo)
+    // );
   }
 
   return (
@@ -136,6 +136,7 @@ export default function CreateManager() {
               item={item}
               deleteContainerInfo={deleteContainerInfo}
             />
+            {console.log(index)}
           </div>
         ))}
       </main>
