@@ -104,7 +104,7 @@ export default function CreateManager() {
 
       <header className="headerCreateManager">
         <div className="headerContent">
-          <h1>Controle de Finanças</h1>
+          <h1>Controle de Finanças..;.</h1>
           <button onClick={showContainerCreateMarker}>Adicionar</button>
         </div>
       </header>
