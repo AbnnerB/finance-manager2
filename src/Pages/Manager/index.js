@@ -9,7 +9,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { FiArrowUpCircle, FiArrowDownCircle } from "react-icons/fi";
 import { FaDollarSign } from "react-icons/fa";
 import { GoArrowLeft } from "react-icons/go";
-import jsPDF from "jspdf";
+// import jsPDF from "jspdf";
 import TablePdf from "../../Components/TablePdf";
 
 export default function Manager() {
@@ -161,132 +161,162 @@ export default function Manager() {
 
     window.print();
   }
-  console.log(totalReceived);
+
+  const [tablePrint, setTablePrint] = useState(false);
 
   return (
     <>
-      <header className="headerManager">
-        <div className="nameAndLinkReturn">
-          <Link to="/">
-            <GoArrowLeft title="Voltar a Pagina incial" />
-          </Link>
+      <button onClick={() => setTablePrint(false)}>
+        <GoArrowLeft />
+      </button>
+      {tablePrint ? (
+        <TablePdf
+          totalReceived={totalReceived}
+          totalExpense={totalExpense}
+          finalResult={finalResult}
+        />
+      ) : (
+        <>
+          <header className="headerManager">
+            <div className="nameAndLinkReturn">
+              <Link to="/">
+                <GoArrowLeft title="Voltar a Pagina incial" />
+              </Link>
 
-          <h1>{storedAllFinances[idUrlNumber].name}</h1>
+              <h1>{storedAllFinances[idUrlNumber].name}</h1>
 
-          <button onClick={transformPdf}>Imprimir</button>
-        </div>
-
-        <section className="containerCards">
-          <CardResults
-            name="Entrada"
-            icon={<FiArrowUpCircle />}
-            value={totalReceived}
-          />
-          <CardResults
-            name="Saida"
-            icon={<FiArrowDownCircle />}
-            value={totalExpense}
-          />
-          <CardResults
-            name="Total"
-            icon={<FaDollarSign />}
-            value={finalResult}
-          />
-        </section>
-      </header>
-      <div className="containerContent">
-        <section className="topoInputs">
-          <div className="containerLabelInputs">
-            <label>
-              Descrição
-              <input
-                type="text"
-                name="inputName"
-                placeholder="Digite um nome"
-                value={products}
-                onChange={(e) => setProducts(e.target.value)}
-                autoFocus
-                maxLength="25"
-              />
-            </label>
-          </div>
-          <div className="containerLabelInputs">
-            <label>
-              Valor
-              <input
-                type="number"
-                name="inputValue"
-                placeholder="Digite um valor"
-                value={values}
-                min="1"
-                onChange={(e) => setValues(e.target.value)}
-              />
-            </label>
-          </div>
-          <div className="containerLabelInputsRadio">
-            <div>
-              <label>
-                <input
-                  type="radio"
-                  name="typeInput"
-                  value="entrada"
-                  onChange={handleInputRadioChange}
-                  checked={inputRadio.typeInput === "entrada"}
-                />
-                Entrada
-              </label>
+              <button onClick={transformPdf}>Imprimir</button>
             </div>
-            <div>
-              <label>
-                <input
-                  type="radio"
-                  name="typeInput"
-                  value="saida"
-                  onChange={handleInputRadioChange}
-                  checked={inputRadio.typeInput === "saida"}
-                />
-                Saida
-              </label>
-            </div>
-          </div>
 
-          <button onClick={addLine}>Adicionar</button>
-        </section>
-        <section className="sectionTable">
-          {addInfoDataArray.length >= 1 && (
-            <table border="1">
-              <thead>
-                <tr>
-                  <th>Descrição</th>
-                  <th>Valor</th>
-                  <th>Tipo</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {addInfoDataArray.map((item, index) => (
-                  <tr key={index}>
-                    <td className="tdProductValue">{item.product} </td>
-                    <td className="tdProductValue">{`R$ ${item.values}`}</td>
-                    <td className="tdType">
-                      {item.valueType === "entrada" ? (
-                        <FiArrowUpCircle size="20" color="green" />
-                      ) : (
-                        <FiArrowDownCircle size="20" color="red" />
-                      )}
-                    </td>
-                    <td className="tdButton">
-                      <button onClick={() => deleteLine(item.id)}>
-                        <AiFillDelete />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </section>
-      </div>
+            <section className="containerCards">
+              <CardResults
+                name="Entrada"
+                icon={<FiArrowUpCircle />}
+                value={totalReceived}
+              />
+              <CardResults
+                name="Saida"
+                icon={<FiArrowDownCircle />}
+                value={totalExpense}
+              />
+              <CardResults
+                name="Total"
+                icon={<FaDollarSign />}
+                value={finalResult}
+              />
+            </section>
+          </header>
+          <div className="containerContent">
+            <section className="topoInputs">
+              <div className="containerLabelInputs">
+                <label>
+                  Descrição
+                  <input
+                    type="text"
+                    name="inputName"
+                    placeholder="Digite um nome"
+                    value={products}
+                    onChange={(e) => setProducts(e.target.value)}
+                    autoFocus
+                    maxLength="25"
+                  />
+                </label>
+              </div>
+              <div className="containerLabelInputs">
+                <label>
+                  Valor
+                  <input
+                    type="number"
+                    name="inputValue"
+                    placeholder="Digite um valor"
+                    value={values}
+                    min="1"
+                    onChange={(e) => setValues(e.target.value)}
+                  />
+                </label>
+              </div>
+              <div className="containerLabelInputsRadio">
+                <div>
+                  <label>
+                    <input
+                      type="radio"
+                      name="typeInput"
+                      value="entrada"
+                      onChange={handleInputRadioChange}
+                      checked={inputRadio.typeInput === "entrada"}
+                    />
+                    Entrada
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    <input
+                      type="radio"
+                      name="typeInput"
+                      value="saida"
+                      onChange={handleInputRadioChange}
+                      checked={inputRadio.typeInput === "saida"}
+                    />
+                    Saida
+                  </label>
+                </div>
+              </div>
+
+              <button onClick={addLine}>Adicionar</button>
+            </section>
+            <section className="sectionTable">
+              {addInfoDataArray.length >= 1 && (
+                <table border="1">
+                  <thead>
+                    <tr>
+                      <th>Descrição</th>
+                      <th>Valor</th>
+                      <th>Tipo</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {addInfoDataArray.map((item, index) => (
+                      <tr key={index}>
+                        <td className="tdProductValue">{item.product} </td>
+                        <td className="tdProductValue">{`R$ ${item.values}`}</td>
+                        <td className="tdType">
+                          {item.valueType === "entrada" ? (
+                            <FiArrowUpCircle size="20" color="green" />
+                          ) : (
+                            <FiArrowDownCircle size="20" color="red" />
+                          )}
+                        </td>
+                        <td className="tdButton">
+                          <button onClick={() => deleteLine(item.id)}>
+                            <AiFillDelete />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td
+                        colSpan={4}
+                        style={{
+                          backgroundColor: "rgb(127, 172, 255)",
+                          textAlign: "center",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        <button onClick={() => setTablePrint(true)}>
+                          Finalizar
+                        </button>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              )}
+            </section>
+          </div>
+        </>
+      )}
     </>
   );
 }

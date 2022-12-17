@@ -4,21 +4,11 @@ import { useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
 
-import { AiFillDelete } from "react-icons/ai";
 import { FiArrowUpCircle, FiArrowDownCircle } from "react-icons/fi";
 
-export default function TablePdf() {
+export default function TablePdf({ totalReceived, totalExpense, finalResult }) {
   const idUrl = useParams();
   const idUrlNumber = parseInt(idUrl.id);
-
-  const [products, setProducts] = useState("");
-  const [values, setValues] = useState("");
-  const [id, setId] = useState(0);
-  const [inputRadio, setInputRadio] = useState({ typeInput: "entrada" });
-
-  const [totalReceived, setTotalReceived] = useState(0);
-  const [totalExpense, setTotalExpense] = useState(0);
-  const [finalResult, setFinalResult] = useState(0);
 
   const [storedAllFinances, setStoredAllFinances] = useState(
     JSON.parse(localStorage.getItem("arrayAllFinances")) || []
@@ -29,7 +19,7 @@ export default function TablePdf() {
   );
 
   return (
-    <div>
+    <>
       <h1 style={{ textAlign: "center" }}>
         {storedAllFinances[idUrlNumber].name}
       </h1>
@@ -39,7 +29,6 @@ export default function TablePdf() {
             <th>Descrição</th>
             <th>Valor</th>
             <th>Tipo</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -49,20 +38,51 @@ export default function TablePdf() {
               <td className="tdProductValue">{`R$ ${item.values}`}</td>
               <td className="tdType">
                 {item.valueType === "entrada" ? (
-                  <FiArrowUpCircle size="20" color="green" />
+                  // <FiArrowUpCircle size="20" color="green" />
+                  <p>Entrada</p>
                 ) : (
-                  <FiArrowDownCircle size="20" color="red" />
+                  <p>Saida</p>
+                  // <FiArrowDownCircle size="20" color="red" />
                 )}
-              </td>
-              <td className="tdButton">
-                <button>
-                  <AiFillDelete />
-                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
+
+      <table style={{ marginTop: "3rem" }}>
+        <thead>
+          <tr>
+            <th>Total Entrada</th>
+            <th>Total Saida</th>
+            <th>Resultado Final</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              {totalReceived.toLocaleString("pt-br", {
+                style: "currency",
+                currency: "BRL",
+              })}
+            </td>
+            <td>
+              {totalExpense.toLocaleString("pt-br", {
+                style: "currency",
+                currency: "BRL",
+              })}
+            </td>
+            <td>
+              {finalResult.toLocaleString("pt-br", {
+                style: "currency",
+                currency: "BRL",
+              })}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button onClick={() => window.print()}>i am here</button>
+    </>
   );
 }
