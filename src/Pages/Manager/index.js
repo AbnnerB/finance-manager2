@@ -129,23 +129,39 @@ export default function Manager() {
 
   //Função imprimir/ PDF
 
-  function transformPdf() {
-    let doc = new jsPDF();
-    doc.text(
-      `
-      Testando
-      ${addInfoDataArray.map((item) => (
-        <div>
-          <p>{item.name}</p>
-        </div>
-      ))}
+  // console.log(resultExpenses);
 
-    `,
-      10,
-      10
-    );
-    doc.save(`${storedAllFinances[idUrlNumber].name}.name.pdf`);
+  //doc.text(
+  // `${storedAllFinances[idUrlNumber].name}
+
+  // ${storedAllFinances[idUrlNumber].resultTotal.toLocaleString("pt-br", {
+  //   style: "currency",
+  //   currency: "BRL",
+  // })}
+
+  //   `,
+
+  // let arrayPdf = JSON.stringify(addInfoDataArray);
+
+  // let arrayAleatorio = ["12", "fdsafds", "Comida"];
+
+  function transformPdf() {
+    // let doc = new jsPDF();
+    // doc.text("teste Somente teste", 10, 10);
+    // doc.autoPrint();
+
+    // doc.addMetadata(addInfoDataArray);
+
+    // doc.fromHTML("<h1>Balaco Baco </h1>", 15, 20);
+    // doc.text(` + ${addInfoDataArray} resultado = ${totalReceived}  `, 10, 10);
+    // doc.save(`${storedAllFinances[idUrlNumber].name}.pdf`);
+
+    /// kkkkkkkkkkkkkkkkkkkkkkkl
+    //Vou deixar quieto isso do pdf ta dando muito trabalho
+
+    window.print();
   }
+  console.log(totalReceived);
 
   return (
     <>
