@@ -6,7 +6,12 @@ import { useParams } from "react-router-dom";
 
 import { FiArrowUpCircle, FiArrowDownCircle } from "react-icons/fi";
 
-export default function TablePdf({ totalReceived, totalExpense, finalResult }) {
+export default function TablePdf({
+  totalReceived,
+  totalExpense,
+  finalResult,
+  showTablePrint,
+}) {
   const idUrl = useParams();
   const idUrlNumber = parseInt(idUrl.id);
 
@@ -20,6 +25,8 @@ export default function TablePdf({ totalReceived, totalExpense, finalResult }) {
 
   return (
     <>
+      <button onClick={showTablePrint()}> voltar</button>
+
       <h1 style={{ textAlign: "center" }}>
         {storedAllFinances[idUrlNumber].name}
       </h1>

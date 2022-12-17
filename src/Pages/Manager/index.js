@@ -164,6 +164,10 @@ export default function Manager() {
 
   const [tablePrint, setTablePrint] = useState(false);
 
+  function showTablePrint() {
+    setTablePrint(!tablePrint);
+  }
+
   return (
     <>
       <button onClick={() => setTablePrint(false)}>
@@ -174,6 +178,7 @@ export default function Manager() {
           totalReceived={totalReceived}
           totalExpense={totalExpense}
           finalResult={finalResult}
+          showTablePrint={showTablePrint}
         />
       ) : (
         <>
@@ -305,7 +310,7 @@ export default function Manager() {
                           fontWeight: "bold",
                         }}
                       >
-                        <button onClick={() => setTablePrint(true)}>
+                        <button onClick={() => showTablePrint}>
                           Finalizar
                         </button>
                       </td>
