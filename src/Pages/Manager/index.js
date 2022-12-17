@@ -9,6 +9,8 @@ import { AiFillDelete } from "react-icons/ai";
 import { FiArrowUpCircle, FiArrowDownCircle } from "react-icons/fi";
 import { FaDollarSign } from "react-icons/fa";
 import { GoArrowLeft } from "react-icons/go";
+import jsPDF from "jspdf";
+import TablePdf from "../../Components/TablePdf";
 
 export default function Manager() {
   const idUrl = useParams();
@@ -125,6 +127,26 @@ export default function Manager() {
     localStorage.setItem("arrayAllFinances", JSON.stringify(storedAllFinances));
   }
 
+  //Função imprimir/ PDF
+
+  function transformPdf() {
+    let doc = new jsPDF();
+    doc.text(
+      `
+      Testando
+      ${addInfoDataArray.map((item) => (
+        <div>
+          <p>{item.name}</p>
+        </div>
+      ))}
+
+    `,
+      10,
+      10
+    );
+    doc.save(`${storedAllFinances[idUrlNumber].name}.name.pdf`);
+  }
+
   return (
     <>
       <header className="headerManager">
@@ -134,6 +156,8 @@ export default function Manager() {
           </Link>
 
           <h1>{storedAllFinances[idUrlNumber].name}</h1>
+
+          <button onClick={transformPdf}>Imprimir</button>
         </div>
 
         <section className="containerCards">
