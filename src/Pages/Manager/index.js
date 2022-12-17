@@ -243,6 +243,22 @@ export default function Manager() {
                   </tr>
                 ))}
               </tbody>
+              <tfoot>
+                <tr>
+                  <td
+                    style={{
+                      backgroundColor: "rgb(127, 172, 255)",
+                      textAlign: "center",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                    }}
+                    colSpan={4}
+                    onClick={() => alert("aa")}
+                  >
+                    Finalizar
+                  </td>
+                </tr>
+              </tfoot>
             </table>
           )}
         </section>
