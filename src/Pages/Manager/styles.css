@@ -136,6 +136,13 @@ th {
   display: flex;
 }
 
+tfoot tr td {
+  background-color: rgb(127, 172, 255);
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 640px) {
   .headerManager {
     height: auto;

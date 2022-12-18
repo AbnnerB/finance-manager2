@@ -125,6 +125,18 @@ export default function Manager() {
     localStorage.setItem("arrayAllFinances", JSON.stringify(storedAllFinances));
   }
 
+  const [hideToPrint, setHideToPrint] = useState(false);
+
+  function hideComponents() {
+    setHideToPrint(true);
+    // alert("sdad");
+
+    setTimeout(() => {
+      window.print();
+      setHideToPrint(false);
+    }, 1500);
+  }
+
   return (
     <>
       <header className="headerManager">
@@ -155,7 +167,10 @@ export default function Manager() {
         </section>
       </header>
       <div className="containerContent">
-        <section className="topoInputs">
+        <section
+          className="topoInputs"
+          style={hideToPrint ? { display: "none" } : { display: "flex" }}
+        >
           <div className="containerLabelInputs">
             <label>
               Descrição
@@ -220,7 +235,9 @@ export default function Manager() {
                   <th>Descrição</th>
                   <th>Valor</th>
                   <th>Tipo</th>
-                  <th></th>
+                  <th
+                    style={hideToPrint ? { display: "none" } : { display: "" }}
+                  ></th>
                 </tr>
               </thead>
               <tbody>
@@ -235,7 +252,12 @@ export default function Manager() {
                         <FiArrowDownCircle size="20" color="red" />
                       )}
                     </td>
-                    <td className="tdButton">
+                    <td
+                      className="tdButton"
+                      style={
+                        hideToPrint ? { display: "none" } : { display: "" }
+                      }
+                    >
                       <button onClick={() => deleteLine(item.id)}>
                         <AiFillDelete />
                       </button>
@@ -246,14 +268,9 @@ export default function Manager() {
               <tfoot>
                 <tr>
                   <td
-                    style={{
-                      backgroundColor: "rgb(127, 172, 255)",
-                      textAlign: "center",
-                      fontWeight: "bold",
-                      cursor: "pointer",
-                    }}
+                    style={hideToPrint ? { display: "none" } : { display: "" }}
                     colSpan={4}
-                    onClick={() => alert("aa")}
+                    onClick={hideComponents}
                   >
                     Finalizar
                   </td>
