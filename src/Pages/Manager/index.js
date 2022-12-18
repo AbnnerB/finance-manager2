@@ -272,7 +272,7 @@ export default function Manager() {
                     colSpan={4}
                     onClick={hideComponents}
                   >
-                    Finalizar
+                    <button>Finalizar</button>
                   </td>
                 </tr>
               </tfoot>
