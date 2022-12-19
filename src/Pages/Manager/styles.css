@@ -120,6 +120,10 @@ th {
   font-weight: bold;
 }
 
+tbody tr:last-of-type {
+  height: 4rem;
+}
+
 .tdButton {
   border: none;
   width: 10%;
@@ -138,6 +142,7 @@ tfoot tr td {
   background-color: rgb(127, 172, 255);
   text-align: center;
   cursor: pointer;
+  padding: 5px;
 }
 
 tfoot tr td button {
