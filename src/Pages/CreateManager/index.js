@@ -107,6 +107,15 @@ export default function CreateManager() {
           <h1>Controle de Finanças</h1>
           <button onClick={showContainerCreateMarker}>Adicionar</button>
         </div>
+        <span
+          style={
+            arrayContainerInfo.length === 1
+              ? { display: "flex" }
+              : { display: "none" }
+          }
+        >
+          Pressione o valor mostrado abaixo!
+        </span>
       </header>
       <main className="containerMain">
         {arrayContainerInfo.map((item, index) => (
