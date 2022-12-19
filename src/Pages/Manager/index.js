@@ -132,8 +132,11 @@ export default function Manager() {
 
     setTimeout(() => {
       window.print();
-      setHideToPrint(false);
     }, 1500);
+
+    setTimeout(() => {
+      setHideToPrint(false);
+    }, 3000);
   }
 
   return (
