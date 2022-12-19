@@ -15,6 +15,13 @@ export default function CreateManager() {
   );
 
   useEffect(() => {
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = function () {
+      window.history.pushState(null, "", window.location.href);
+    };
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem(
       "arrayAllFinances",
       JSON.stringify(arrayContainerInfo)
@@ -59,7 +66,7 @@ export default function CreateManager() {
     setArrayContainerInfo([...arrayContainerInfo, newObj]);
     showContainerCreateMarker();
     setNames("");
-    window.location.reload();
+    // window.location.reload();
   }
 
   function deleteContainerInfo(id) {
@@ -73,7 +80,7 @@ export default function CreateManager() {
     }
 
     setNames("");
-    window.location.reload();
+    // window.location.reload();
   }
 
   return (

@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 
 import "./styles.css";
 
-import CardResults from "../../Components/CardResults/CardResults";
 import { Link, useParams } from "react-router-dom";
 
+import CardResults from "../../Components/CardResults/CardResults";
 import { AiFillDelete } from "react-icons/ai";
 import { FiArrowUpCircle, FiArrowDownCircle } from "react-icons/fi";
 import { FaDollarSign } from "react-icons/fa";
@@ -26,7 +26,6 @@ export default function Manager() {
   const [storedAllFinances, setStoredAllFinances] = useState(
     JSON.parse(localStorage.getItem("arrayAllFinances")) || []
   );
-
   const [addInfoDataArray, setAddInfoDataArray] = useState(
     storedAllFinances[idUrlNumber].infoData || []
   );
