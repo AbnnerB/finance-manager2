@@ -94,8 +94,6 @@
 .sectionTable {
   margin-top: 3rem;
   box-shadow: 2px 1px 10px 2px rgb(185, 185, 185);
-
-  justify-content: center;
 }
 
 table {
@@ -147,6 +145,21 @@ tfoot tr td button {
   font-weight: bold;
   border: none;
   font-size: 1.2rem;
+}
+
+.tablePrint {
+  box-shadow: none;
+  border: 1px solid black;
+}
+
+.tablePrint thead tr th,
+.tablePrint tbody td {
+  text-align: center;
+  border: 1px solid black;
+}
+
+.tablePrint .tdProductValue {
+  width: 50%;
 }
 
 .screenFinalizeShowHideComponents {

@@ -157,7 +157,9 @@ export default function Manager() {
             <GoArrowLeft title="Voltar a Pagina incial" />
           </Link>
 
-          <h1>{storedAllFinances[idUrlNumber].name}</h1>
+          <h1 style={hideToPrint ? { color: "black" } : { color: "white" }}>
+            {storedAllFinances[idUrlNumber].name}
+          </h1>
         </div>
 
         <section className="containerCards">
@@ -241,7 +243,7 @@ export default function Manager() {
         </section>
         <section className="sectionTable">
           {addInfoDataArray.length >= 1 && (
-            <table border="1">
+            <table border="1" className={hideToPrint ? "tablePrint" : ""}>
               <thead>
                 <tr>
                   <th>Descrição</th>
