@@ -132,15 +132,25 @@ export default function Manager() {
 
     setTimeout(() => {
       window.print();
-    }, 1500);
+    }, 800);
 
-    setTimeout(() => {
-      setHideToPrint(false);
-    }, 5000);
+    // setTimeout(() => {
+    //   setHideToPrint(false);
+    // }, 5000);
+  }
+
+  function showComponentsHidde() {
+    setHideToPrint(false);
   }
 
   return (
     <>
+      <article
+        className="screenFinalizeShowHideComponents"
+        style={hideToPrint ? { display: "block" } : { display: "none" }}
+        onClick={showComponentsHidde}
+      ></article>
+
       <header className="headerManager">
         <div className="nameAndLinkReturn">
           <Link to="/">
