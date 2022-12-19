@@ -136,7 +136,7 @@ export default function Manager() {
 
     setTimeout(() => {
       setHideToPrint(false);
-    }, 3000);
+    }, 5000);
   }
 
   return (
