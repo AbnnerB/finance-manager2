@@ -66,7 +66,6 @@ export default function CreateManager() {
     setArrayContainerInfo([...arrayContainerInfo, newObj]);
     showContainerCreateMarker();
     setNames("");
-    // window.location.reload();
   }
 
   function deleteContainerInfo(id) {
@@ -80,7 +79,6 @@ export default function CreateManager() {
     }
 
     setNames("");
-    // window.location.reload();
   }
 
   return (
