@@ -129,7 +129,6 @@ export default function Manager() {
 
   function hideComponents() {
     setHideToPrint(true);
-    // alert("sdad");
 
     setTimeout(() => {
       window.print();
