@@ -133,9 +133,7 @@ export default function Manager() {
       window.print();
     }, 800);
 
-    // setTimeout(() => {
-    //   setHideToPrint(false);
-    // }, 5000);
+   
   }
 
   function showComponentsHidde() {
