@@ -14,6 +14,7 @@ export default function CreateManager() {
     () => JSON.parse(localStorage.getItem("arrayAllFinances")) || []
   );
 
+  //codigo para impedir q o usuario utilize o navegador para voltar(seta do navedor de voltar) na pagina
   useEffect(() => {
     window.history.pushState(null, "", window.location.href);
     window.onpopstate = function () {

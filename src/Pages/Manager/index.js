@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 
 import "./styles.css";
 
+//Função desta branch resolver erro da url
+//deixando anotado pra eu retornar futuramente quando eu aprender como resolver
+
 import { Link, useParams } from "react-router-dom";
 
 import CardResults from "../../Components/CardResults/CardResults";
@@ -26,6 +29,11 @@ export default function Manager() {
   const [storedAllFinances, setStoredAllFinances] = useState(
     JSON.parse(localStorage.getItem("arrayAllFinances")) || []
   );
+
+  if (idUrlNumber + 1 > storedAllFinances.length) {
+    window.location.pathname = "/";
+  }
+
   const [addInfoDataArray, setAddInfoDataArray] = useState(
     storedAllFinances[idUrlNumber].infoData || []
   );
