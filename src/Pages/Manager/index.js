@@ -29,6 +29,11 @@ export default function Manager() {
   const [storedAllFinances, setStoredAllFinances] = useState(
     JSON.parse(localStorage.getItem("arrayAllFinances")) || []
   );
+
+  if (idUrlNumber + 1 > storedAllFinances.length) {
+    window.location.pathname = "/";
+  }
+
   const [addInfoDataArray, setAddInfoDataArray] = useState(
     storedAllFinances[idUrlNumber].infoData || []
   );
