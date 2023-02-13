@@ -62,7 +62,7 @@ export default function Manager() {
     setInputRadio({ ...inputRadio, [name]: value });
   }
 
-  function addLine(e) {
+  function addLine() {
     if (products.length < 1 || values.length < 1) {
       alert("Preencha as caixas de textos");
       return;
@@ -137,8 +137,6 @@ export default function Manager() {
     setTimeout(() => {
       window.print();
     }, 800);
-
-   
   }
 
   function showComponentsHidde() {
@@ -257,29 +255,38 @@ export default function Manager() {
                 </tr>
               </thead>
               <tbody>
-                {addInfoDataArray.map((item, index) => (
-                  <tr key={index}>
-                    <td className="tdProductValue">{item.product} </td>
-                    <td className="tdProductValue">{`R$ ${item.values}`}</td>
-                    <td className="tdType">
-                      {item.valueType === "entrada" ? (
-                        <FiArrowUpCircle size="20" color="green" />
-                      ) : (
-                        <FiArrowDownCircle size="20" color="red" />
-                      )}
-                    </td>
-                    <td
-                      className="tdButton"
-                      style={
-                        hideToPrint ? { display: "none" } : { display: "" }
-                      }
-                    >
-                      <button onClick={() => deleteLine(item.id)}>
-                        <AiFillDelete />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                {addInfoDataArray.map((item, index) => {
+                  const getValue = parseFloat(item.values);
+
+                  const valueFormat = getValue.toLocaleString("pt-br", {
+                    style: "currency",
+                    currency: "BRL",
+                  });
+
+                  return (
+                    <tr key={index}>
+                      <td className="tdProductValue">{item.product} </td>
+                      <td className="tdProductValue">{valueFormat}</td>
+                      <td className="tdType">
+                        {item.valueType === "entrada" ? (
+                          <FiArrowUpCircle size="20" color="green" />
+                        ) : (
+                          <FiArrowDownCircle size="20" color="red" />
+                        )}
+                      </td>
+                      <td
+                        className="tdButton"
+                        style={
+                          hideToPrint ? { display: "none" } : { display: "" }
+                        }
+                      >
+                        <button onClick={() => deleteLine(item.id)}>
+                          <AiFillDelete />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
               <tfoot>
                 <tr>
